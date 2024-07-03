@@ -2,17 +2,22 @@ import axios from "axios";
 import { UserProfileToken } from "../models/userModel";
 import { handleError } from "./ErrorHandler";
 
-const api = "http://localhost:5050/api/v1/";
+const API_URL = "http://localhost:5224/api/v1";
 
-export const loginAPI = async (username: string, password: string) => {
+export const loginAPI = async (email: string, password: string) => {
   try {
-    const data = await axios.post<UserProfileToken>(api + "login", {
-      username: username,
-      password: password,
+    const response = await axios.post(`${API_URL}/login`, {
+      email,
+      password,
     });
-    return data;
+    return response.data;
   } catch (error) {
-    handleError(error);
+    if (axios.isAxiosError(error)) {
+      console.error("Axios error:", error.response?.data);
+    } else {
+      console.error("Unexpected error:", error);
+    }
+    throw error;
   }
 };
 
@@ -22,12 +27,12 @@ export const registerAPI = async (
   password: string
 ) => {
   try {
-    const data = await axios.post<UserProfileToken>(api + "register", {
-      email: email,
-      username: username,
-      password: password,
+    const response = await axios.post<UserProfileToken>(`${API_URL}/register`, {
+      email,
+      username,
+      password,
     });
-    return data;
+    return response.data;
   } catch (error) {
     handleError(error);
   }

@@ -1,8 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import Logo from "../../Components/Images/logo.png";
-import LogoDark from "../../Components/Images/logoDark.png";
 import { useAuth } from "../context/useAuth";
 type Props = {};
 
@@ -28,11 +26,6 @@ function LoginPage({}: Props) {
         <div className="flex flex-wrap items-center">
           <div className="hidden w-full xl:block xl:w-1/2">
             <div className="py-17.5 px-26 text-center">
-              <Link className="mb-5.5 inline-block" to="/">
-                <img className="hidden dark:block" src={LogoDark} alt="Logo" />
-                <img className="dark:hidden" src={Logo} alt="Logo" />
-              </Link>
-
               <p className="2xl:px-20">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit
                 suspendisse.

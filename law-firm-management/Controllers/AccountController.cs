@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace law_firm_management.Controllers
 {
+    [Route("api/v1")]
     [ApiController]
-    [Route("api/v1/[controller]")]
     public class AccountController : ControllerBase
     {
         private readonly SignInManager<AppUser> _signInManager;
@@ -52,7 +52,11 @@ namespace law_firm_management.Controllers
                 Log.Information($"User logged in successfully: {loginDto.Email}");
                 return Ok(new UserDto
                 {
+                    Id = user.Id,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
                     Email = user.Email,
+                    PhoneNumber = user.PhoneNumber,
                     Token = _tokenService.CreateToken(user)
                 });
             }
@@ -103,7 +107,11 @@ namespace law_firm_management.Controllers
                     Log.Information($"User registered successfully: {registerDto.Email}");
                     return Ok(new UserDto
                     {
+                        Id = appUser.Id,
+                        FirstName = appUser.FirstName,
+                        LastName = appUser.LastName,
                         Email = appUser.Email,
+                        PhoneNumber = appUser.PhoneNumber,
                         Token = _tokenService.CreateToken(appUser)
                     });
                 }
