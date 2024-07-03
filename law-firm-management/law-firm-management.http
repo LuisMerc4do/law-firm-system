@@ -1,0 +1,6 @@
+@law_firm_management_HostAddress = http://localhost:5050
+
+GET {{law_firm_management_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
