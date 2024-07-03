@@ -16,7 +16,19 @@ using Serilog;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("http://localhost:3000", "https://localhost:3000", "http://localhost:7283")
+                          .AllowAnyHeader()
+                          .SetIsOriginAllowedToAllowWildcardSubdomains()
+                          .WithMethods("POST", "PUT", "DELETE", "GET");
+                      });
+});
 // Configuration
 builder.Configuration.AddJsonFile("appsettings.json");
 
@@ -113,7 +125,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Amazon Carbon Tracker API V1");
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Law Firm System V1");
     });
 }
 
@@ -121,7 +133,7 @@ app.UseRouting();
 app.UseSerilogRequestLogging(); // Enable Serilog request logging middleware
 app.UseAuthentication();
 app.UseAuthorization();
-
+app.UseCors();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
