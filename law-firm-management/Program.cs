@@ -76,7 +76,7 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:SigningKey"]))
     };
 });
-
+builder.Services.AddHttpClient();
 // Swagger
 builder.Services.AddSwaggerGen(options =>
 {
@@ -127,6 +127,7 @@ app.UseCors(x => x
 .AllowAnyHeader()
 .AllowCredentials()
 .SetIsOriginAllowed(origin => true));
+
 app.MapControllers();
 
 app.Run();
