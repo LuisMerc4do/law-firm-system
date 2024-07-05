@@ -38,11 +38,6 @@ It is a simple but comprenhensive backend system, usign the best code practices,
 - **Security**: Emphasized security by enforcing strong password policies and using JWT for secure authentication.
 - **Scalability**: Designed the system with scalability in mind, using Entity Framework Core with PostgreSQL for efficient data management.
 
-### Backend Technologies
 
-- **ASP.NET Core**: The core framework for building the backend services.
-- **Entity Framework Core**: Used for ORM (Object-Relational Mapping) to interact with the PostgreSQL database.
-- **Serilog**: For logging application events and errors.
-- **Swagger/OpenAPI**: For API documentation and testing.
-- **JWT (JSON Web Tokens)**: For secure user authentication.
-- **IMemoryCache**: For caching frequently accessed data.
+![Captura de pantalla 2024-07-05 183800](https://github.com/LuisMerc4do/law-firm-system/assets/163725779/b6cedf1e-c105-430c-8b3b-40b099ac24bd)
+![Captura de pantalla 2024-07-05 183810](https://github.com/LuisMerc4do/law-firm-system/assets/163725779/a4a3e281-7def-4eb2-b346-6e27ef83238b)
