@@ -25,6 +25,7 @@ import {
   FormMessage,
 } from "../components/ui/form";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
+import toast from "react-hot-toast";
 
 // Define the form schema
 const formSchema = z.object({
@@ -53,11 +54,8 @@ const LoginPage: React.FC = () => {
     setError(null);
     try {
       await loginUser(data.email, data.password);
-      // Navigation is handled in the context
     } catch (err) {
-      setError(
-        err instanceof Error ? err.message : "An error occurred during login."
-      );
+      toast.error("Error al Iniciar Sesion");
     } finally {
       setIsLoading(false);
     }
