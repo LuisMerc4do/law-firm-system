@@ -18,7 +18,14 @@ export type UserProfile = {
 type UserContextType = {
   user: UserProfile | null;
   token: string | null;
-  registerUser: (email: string, username: string, password: string) => void;
+  registerUser: (
+    email: string,
+    username: string,
+    password: string,
+    firstName: string,
+    lastName: string,
+    phoneNumber: string
+  ) => void;
   loginUser: (email: string, password: string) => void;
   logout: () => void;
   isLoggedIn: () => boolean;
@@ -56,10 +63,20 @@ export const UserProvider = ({ children }: Props) => {
   const registerUser = async (
     email: string,
     username: string,
-    password: string
+    password: string,
+    firstName: string,
+    lastName: string,
+    phoneNumber: string
   ) => {
     try {
-      const res = await registerAPI(email, username, password);
+      const res = await registerAPI(
+        email,
+        username,
+        password,
+        firstName,
+        lastName,
+        phoneNumber
+      );
       if (res) {
         const userObj = {
           userName: res.userName,
@@ -73,7 +90,7 @@ export const UserProvider = ({ children }: Props) => {
         navigate("/search");
       }
     } catch (error) {
-      toast.error("Failed to register");
+      toast.error("Error al crear la cuenta");
     }
   };
 
@@ -93,7 +110,7 @@ export const UserProvider = ({ children }: Props) => {
         navigate("/search");
       }
     } catch (error) {
-      toast.error("Failed to login");
+      toast.error("Error al Iniciar Sesion");
     }
   };
 

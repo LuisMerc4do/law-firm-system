@@ -51,7 +51,6 @@ const LoginPage: React.FC = () => {
 
   const onSubmit = async (data: FormData) => {
     setIsLoading(true);
-    setError(null);
     try {
       await loginUser(data.email, data.password);
     } catch (err) {
