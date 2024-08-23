@@ -1,4 +1,3 @@
-import React from "react";
 import Hero from "../components/Layout/Body/Hero";
 import Brand from "../components/Layout/Body/Brand";
 type Props = {};
