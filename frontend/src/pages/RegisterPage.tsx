@@ -32,27 +32,27 @@ import { useAuth } from "../context/useAuth";
 const formSchema = z
   .object({
     email: z.string().email({
-      message: "Por favor ingrese un correo electrónico válido.",
+      message: "Please enter a valid email address.",
     }),
     firstName: z.string().min(2, {
-      message: "Por favor ingrese su Nombre.",
+      message: "Please enter your first name.",
     }),
     lastName: z.string().min(2, {
-      message: "Por favor ingrese su Apellido.",
+      message: "Please enter your last name.",
     }),
     phoneNumber: z.string().min(8, {
-      message: "Por favor ingrese su Numero de telefono.",
+      message: "Please enter your phone number.",
     }),
     password: z.string().min(8, {
-      message: "La contraseña debe tener al menos 8 caracteres.",
+      message: "Password must be at least 8 characters long.",
     }),
     confirmPassword: z.string(),
     terms: z.boolean().refine((val) => val === true, {
-      message: "Debe aceptar los términos y condiciones.",
+      message: "You must accept the terms and conditions.",
     }),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: "Las contraseñas no coinciden.",
+    message: "Passwords do not match.",
     path: ["confirmPassword"],
   });
 
@@ -86,7 +86,7 @@ export default function RegisterPage() {
         values.phoneNumber
       );
     } catch (err) {
-      toast.error("Error al Iniciar Sesion");
+      toast.error("Error during registration.");
     } finally {
       setIsLoading(false);
     }
@@ -96,9 +96,9 @@ export default function RegisterPage() {
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle>Registro</CardTitle>
+          <CardTitle>Register</CardTitle>
           <CardDescription>
-            Cree una cuenta para gestionar sus casos legales.
+            Create an account to manage your legal cases.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -109,9 +109,9 @@ export default function RegisterPage() {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Correo electrónico</FormLabel>
+                    <FormLabel>Email address</FormLabel>
                     <FormControl>
-                      <Input placeholder="nombre@ejemplo.com" {...field} />
+                      <Input placeholder="name@example.com" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -122,9 +122,9 @@ export default function RegisterPage() {
                 name="firstName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Tu nombre</FormLabel>
+                    <FormLabel>Your first name</FormLabel>
                     <FormControl>
-                      <Input placeholder="tu nombre" {...field} />
+                      <Input placeholder="Your first name" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -135,9 +135,9 @@ export default function RegisterPage() {
                 name="lastName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Tus Apellidos</FormLabel>
+                    <FormLabel>Your last name</FormLabel>
                     <FormControl>
-                      <Input placeholder="tu nombre" {...field} />
+                      <Input placeholder="Your last name" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -148,9 +148,9 @@ export default function RegisterPage() {
                 name="phoneNumber"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Tu numero de Telefono</FormLabel>
+                    <FormLabel>Your phone number</FormLabel>
                     <FormControl>
-                      <Input placeholder="tu nombre" {...field} />
+                      <Input placeholder="Your phone number" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -161,7 +161,7 @@ export default function RegisterPage() {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Contraseña</FormLabel>
+                    <FormLabel>Password</FormLabel>
                     <FormControl>
                       <div className="relative">
                         <Input
@@ -193,7 +193,7 @@ export default function RegisterPage() {
                 name="confirmPassword"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Confirmar contraseña</FormLabel>
+                    <FormLabel>Confirm password</FormLabel>
                     <FormControl>
                       <Input type="password" {...field} />
                     </FormControl>
@@ -213,15 +213,15 @@ export default function RegisterPage() {
                       />
                     </FormControl>
                     <div className="space-y-1 leading-none">
-                      <FormLabel>Acepto los términos y condiciones</FormLabel>
+                      <FormLabel>I accept the terms and conditions</FormLabel>
                       <FormDescription>
-                        Al crear una cuenta, usted acepta nuestros{" "}
+                        By creating an account, you agree to our{" "}
                         <a href="#" className="text-primary hover:underline">
-                          Términos de servicio
+                          Terms of Service
                         </a>{" "}
-                        y{" "}
+                        and{" "}
                         <a href="#" className="text-primary hover:underline">
-                          Política de privacidad
+                          Privacy Policy
                         </a>
                         .
                       </FormDescription>
@@ -230,16 +230,16 @@ export default function RegisterPage() {
                 )}
               />
               <Button type="submit" className="w-full" disabled={isLoading}>
-                {isLoading ? "Registrando..." : "Registrarse"}
+                {isLoading ? "Registering..." : "Register"}
               </Button>
             </form>
           </Form>
         </CardContent>
         <CardFooter className="flex justify-center">
           <p className="text-sm text-muted-foreground">
-            ¿Ya tiene una cuenta?{" "}
+            Already have an account?{" "}
             <a href="#" className="text-primary hover:underline">
-              Iniciar sesión
+              Log in
             </a>
           </p>
         </CardFooter>
@@ -290,11 +290,11 @@ function passwordStrength(password: string) {
 
   // Determine strength label
   let strength = "";
-  if (score === 0) strength = "Muy débil";
-  else if (score === 1) strength = "Débil";
-  else if (score === 2) strength = "Aceptable";
-  else if (score === 3) strength = "Fuerte";
-  else if (score >= 4) strength = "Muy fuerte";
+  if (score === 0) strength = "Very weak";
+  else if (score === 1) strength = "Weak";
+  else if (score === 2) strength = "Acceptable";
+  else if (score === 3) strength = "Strong";
+  else if (score >= 4) strength = "Very strong";
 
   // Return the result
   return {
@@ -321,116 +321,67 @@ testPasswords.forEach((password) => {
   console.log("---");
 });
 
-function PasswordStrengthIndicator({ password }: { password: string }) {
+interface PasswordStrengthIndicatorProps {
+  password: string;
+}
+
+function PasswordStrengthIndicator({
+  password,
+}: PasswordStrengthIndicatorProps) {
   const strength = passwordStrength(password);
+
   return (
     <div className="mt-2">
-      <div className="flex justify-between mb-1">
-        <span className="text-sm font-medium text-muted-foreground">
-          Fortaleza de la contraseña
-        </span>
-        <span className="text-sm font-medium text-muted-foreground">
-          {strength.score === 0
-            ? "Muy débil"
-            : strength.score === 1
-            ? "Débil"
-            : strength.score === 2
-            ? "Aceptable"
-            : strength.score === 3
-            ? "Fuerte"
-            : "Muy fuerte"}
-        </span>
-      </div>
-      <div className="w-full bg-gray-200 rounded-full h-2.5">
-        <div
-          className={cn(
-            "h-2.5 rounded-full",
-            strength.score === 0 && "w-0",
-            strength.score === 1 && "w-1/4 bg-red-500",
-            strength.score === 2 && "w-2/4 bg-yellow-500",
-            strength.score === 3 && "w-3/4 bg-blue-500",
-            strength.score >= 4 && "w-full bg-green-500"
-          )}
-        ></div>
-      </div>
-      <ul className="mt-2 grid grid-cols-2 gap-2 text-sm">
+      <p
+        className={cn("text-sm font-medium", {
+          "text-red-600": strength.score <= 1,
+          "text-yellow-600": strength.score === 2,
+          "text-green-600": strength.score >= 3,
+        })}
+      >
+        {strength.strength}
+      </p>
+      <ul className="mt-1 space-y-1 text-sm text-muted-foreground">
         <li
-          className={cn(
-            "flex items-center",
-            strength.checks.length ? "text-green-500" : "text-muted-foreground"
-          )}
+          className={cn({
+            "text-green-600": strength.checks.length,
+            "line-through text-muted-foreground": !strength.checks.length,
+          })}
         >
-          <Check
-            className={cn(
-              "mr-1 h-4 w-4",
-              !strength.checks.length && "text-muted-foreground"
-            )}
-          />{" "}
-          8+ caracteres
+          • At least 8 characters
         </li>
         <li
-          className={cn(
-            "flex items-center",
-            strength.checks.hasUpperCase
-              ? "text-green-500"
-              : "text-muted-foreground"
-          )}
+          className={cn({
+            "text-green-600": strength.checks.hasUpperCase,
+            "line-through text-muted-foreground": !strength.checks.hasUpperCase,
+          })}
         >
-          <Check
-            className={cn(
-              "mr-1 h-4 w-4",
-              !strength.checks.hasUpperCase && "text-muted-foreground"
-            )}
-          />{" "}
-          Mayúscula
+          • At least 1 uppercase letter
         </li>
         <li
-          className={cn(
-            "flex items-center",
-            strength.checks.hasLowerCase
-              ? "text-green-500"
-              : "text-muted-foreground"
-          )}
+          className={cn({
+            "text-green-600": strength.checks.hasLowerCase,
+            "line-through text-muted-foreground": !strength.checks.hasLowerCase,
+          })}
         >
-          <Check
-            className={cn(
-              "mr-1 h-4 w-4",
-              !strength.checks.hasLowerCase && "text-muted-foreground"
-            )}
-          />{" "}
-          Minúscula
+          • At least 1 lowercase letter
         </li>
         <li
-          className={cn(
-            "flex items-center",
-            strength.checks.hasNumber
-              ? "text-green-500"
-              : "text-muted-foreground"
-          )}
+          className={cn({
+            "text-green-600": strength.checks.hasNumber,
+            "line-through text-muted-foreground": !strength.checks.hasNumber,
+          })}
         >
-          <Check
-            className={cn(
-              "mr-1 h-4 w-4",
-              !strength.checks.hasNumber && "text-muted-foreground"
-            )}
-          />{" "}
-          Número
+          • At least 1 number
         </li>
         <li
-          className={cn(
-            "flex items-center",
-            strength.checks.hasSpecialChar
-              ? "text-green-500"
-              : "text-muted-foreground"
-          )}
+          className={cn({
+            "text-green-600": strength.checks.hasSpecialChar,
+            "line-through text-muted-foreground":
+              !strength.checks.hasSpecialChar,
+          })}
         >
-          <Check
-            className={cn(
-              "mr-1 h-4 w-4",
-              !strength.checks.hasSpecialChar && "text-muted-foreground"
-            )}
-          />{" "}
-          Carácter especial
+          • At least 1 special character
         </li>
       </ul>
     </div>
