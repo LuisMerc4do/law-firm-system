@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "law-firm-management", "law-firm-management\law-firm-management.csproj", "{455FF071-BEB7-47AD-9F2D-82303C8FA54C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "law-firm-management", "law-firm-management", "{64A34AD7-57D8-4DC7-A2A4-6602F071B20B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,5 +23,8 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9E9232AB-CFCD-4225-8DFF-2ACC3C9E65BD}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{455FF071-BEB7-47AD-9F2D-82303C8FA54C} = {64A34AD7-57D8-4DC7-A2A4-6602F071B20B}
 	EndGlobalSection
 EndGlobal

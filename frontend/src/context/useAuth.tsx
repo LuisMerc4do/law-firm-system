@@ -106,7 +106,6 @@ export const UserProvider = ({ children }: Props) => {
         localStorage.setItem("user", JSON.stringify(userObj));
         setToken(res.token);
         setUser(userObj);
-        toast.success("Login Success!");
         navigate("/search");
       }
     } catch (error) {
@@ -119,6 +118,9 @@ export const UserProvider = ({ children }: Props) => {
     localStorage.removeItem("user");
     setUser(null);
     setToken(null);
+    toast.success(
+      "Te has desconectado de tu cuenta Exitosamente!, esperamos verte pronto."
+    );
     navigate("/");
   };
 

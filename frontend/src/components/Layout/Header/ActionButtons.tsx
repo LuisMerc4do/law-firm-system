@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Sheet,
   SheetContent,
@@ -11,9 +10,12 @@ import { AlignJustify } from "lucide-react";
 import { Button } from "../../ui/button";
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
+import { useAuth } from "../../../context/useAuth";
 type Props = {};
 
 const ActionButtons = (props: Props) => {
+  const { isLoggedIn } = useAuth();
+  const { logout } = useAuth();
   return (
     <div>
       <div className="md:hidden">
@@ -39,12 +41,24 @@ const ActionButtons = (props: Props) => {
       </div>
 
       <div className="hidden md:flex md:space-x-2">
-        <Link to="/login">
-          <Button className="text-md" variant="ghost">
-            Sign in
-          </Button>
-        </Link>
-        <Button className="text-md">Get Started</Button>
+        {isLoggedIn() ? (
+          <>
+            <Button className="text-md" onClick={logout}>
+              Logout
+            </Button>
+          </>
+        ) : (
+          <>
+            <Link to="/login">
+              <Button className="text-md" variant="ghost">
+                Sign in
+              </Button>
+            </Link>
+            <Link to="/register">
+              <Button className="text-md">Get Started</Button>
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );
