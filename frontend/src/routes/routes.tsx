@@ -4,6 +4,7 @@ import LoginPage from "../pages/LoginPage";
 import HomePage from "../pages/HomePage";
 import DashboardPage from "../pages/dashboard/DashboardPage";
 import RegisterPage from "../pages/RegisterPage";
+import CreateLegalCase from "../pages/dashboard/CreateLegalCase";
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
       {
         path: "dashboard",
         element: <DashboardPage />,
+      },
+      {
+        path: "case-creation",
+        element: <CreateLegalCase />,
       },
     ],
   },
