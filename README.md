@@ -1,42 +1,108 @@
-## Law Firm Management System Documentation
+📚 Law Firm Management System
+Welcome to the Law Firm Management System! This project is a comprehensive backend solution aimed at streamlining legal case management for law firms. The system is designed using ASP.NET Core following best coding practices, making it ready for production deployment.
 
-It is a simple but comprenhensive backend system, usign the best code practices, making ready for deploy applications. Frontend still in development, right now I am finishing the backend functionalities, the main point of this project is to improve my logging, caching, cors and unit testing, I am aiming to create a solid structure of programming for future projects. ASP.NET is being very useful but challeging, it is a bit different from what I am use to but more complete than node.js.
+📝 Project Overview
+The Law Firm Management System provides a robust backend architecture to support the operational needs of law firms, including case tracking, document management, and internal communication. The primary focus of this project is to refine and enhance skills in:
 
-### Key Functionalities
+Logging and Monitoring
+Caching Strategies
+Cross-Origin Resource Sharing (CORS) Management
+Unit Testing and Code Quality
+Why ASP.NET Core?
+ASP.NET Core was chosen for its comprehensive features, powerful tooling, and strong support for scalable web applications. Although challenging compared to my usual Node.js projects, it has proven to be a more feature-rich and robust choice.
 
-1. **Case Management**
+Note: The frontend for this project is still under development. Stay tuned for updates!
 
-   - **Create, Update, Delete, and Retrieve Cases**: The system allows users to manage cases efficiently. Cases can be created, updated, deleted, and retrieved with ease.
-   - **Case Assignments**: Lawyers and staff can be assigned to specific cases.
-   - **Case Status Tracking**: Track the status of each case through its lifecycle.
+🚀 Key Features
+1. Case Management
+CRUD Operations: Create, update, delete, and retrieve cases efficiently.
+Case Assignments: Assign cases to lawyers and staff members with role-based permissions.
+Status Tracking: Monitor the status of each case throughout its lifecycle.
+2. Document Management
+Upload & Storage: Securely upload and store case-related documents.
+Document Retrieval: Retrieve documents linked to specific cases.
+Document Deletion: Delete documents when they are no longer needed.
+3. Messaging System
+Internal Messaging: Enables communication between team members within the system.
+Message History: Keeps a log of all messages exchanged per case.
+4. Notifications
+Real-time Notifications: Uses SignalR to push real-time notifications for important updates.
+Email Notifications: Sends email alerts for critical updates and reminders.
+5. User Authentication and Authorization
+JWT Authentication: Secures API endpoints using JSON Web Tokens (JWT).
+Role-based Access Control: Implements roles (Admin, Lawyer, Staff) to control access to specific features.
+🛠️ Technologies Used
+Backend Framework: ASP.NET Core 7.0
+Database: PostgreSQL with Entity Framework Core
+Caching: IMemoryCache for efficient data retrieval
+Logging: Serilog for detailed logging and monitoring
+API Documentation: Swagger for comprehensive API documentation
+Real-time Communication: SignalR for real-time notifications
+🔧 Setup and Installation
+Follow these steps to get the backend system up and running on your local machine:
 
-2. **Document Management**
+Prerequisites
+.NET SDK 7.0
+PostgreSQL
+Docker (optional but recommended for easier setup)
+Installation Steps
+Clone the Repository
 
-   - **Document Upload and Storage**: Users can upload and store case-related documents.
-   - **Document Retrieval**: Retrieve documents associated with specific cases.
-   - **Document Deletion**: Remove documents that are no longer needed.
+bash
+Copy code
+git clone https://github.com/your-username/law-firm-management-system.git
+cd law-firm-management-system
+Configure the Database
 
-3. **Messaging**
+Update the appsettings.json file with your PostgreSQL connection string:
+json
+Copy code
+"ConnectionStrings": {
+  "DefaultConnection": "Host=localhost;Port=5432;Database=LawFirmDB;Username=your-username;Password=your-password"
+}
+Apply Migrations
 
-   - **Internal Messaging**: Allows users to send messages within the system, facilitating communication between team members.
-   - **Message History**: Maintain a history of messages for each case.
+bash
+Copy code
+dotnet ef database update
+Run the Application
 
-4. **Notifications**
+bash
+Copy code
+dotnet run
+Access the API Documentation
 
-   - **Real-time Notifications**: Notify users of important events and updates in real-time.
-   - **Email Notifications**: Send email alerts for critical updates and reminders.
+Open your browser and navigate to http://localhost:5000/swagger to view the API documentation.
+🔍 Improvements and Focus Areas
+This project places a strong emphasis on the following areas:
 
-5. **User Authentication and Authorization**
-   - **JWT Authentication**: Secure the API endpoints using JWT Bearer tokens.
-   - **Role-based Authorization**: Implement role-based access control to restrict access to specific functionalities.
+1. Logging and Monitoring
+Serilog is integrated for comprehensive logging of application events. Logs include request details, error messages, and performance metrics.
+2. Caching
+IMemoryCache is used to store frequently accessed data, reducing load times and improving performance.
+3. CORS Management
+Configured CORS policies to allow secure cross-origin requests, making the API accessible from different frontend applications.
+4. Unit Testing
+Extensive unit tests have been written using xUnit to ensure code quality and reliability. Key functionalities, including authentication and case management, are thoroughly tested.
+🛡️ Security Considerations
+Enforces strong password policies for user accounts.
+Uses JWT Bearer Authentication to secure API endpoints.
+Protects against common web vulnerabilities like SQL Injection and Cross-Site Scripting (XSS).
+📈 Scalability and Future Enhancements
+The system is built with scalability in mind:
 
-### Improvements and Focus
+Uses Entity Framework Core with PostgreSQL for efficient data management.
+Implements Dependency Injection (DI) for better maintainability and testability.
+Designed to easily integrate additional services like payment processing or client portals in the future.
+🤝 Contributing
+Contributions are welcome! If you have suggestions for improvements or want to report a bug, please open an issue or submit a pull request.
 
-- **Logging and Monitoring**: Implemented Serilog for comprehensive logging and monitoring of application events.
-- **Caching**: Used IMemoryCache to cache frequently accessed data, improving application performance.
-- **API Documentation**: Integrated Swagger for API documentation, making it easier for developers to understand and use the API endpoints.
-- **Security**: Emphasized security by enforcing strong password policies and using JWT for secure authentication.
-- **Scalability**: Designed the system with scalability in mind, using Entity Framework Core with PostgreSQL for efficient data management.
+Development Guidelines
+Follow the existing coding standards and practices.
+Ensure all changes are covered by unit tests.
+Update the API documentation with any new or modified endpoints.
+📄 License
+This project is licensed under the MIT License. See the LICENSE file for more details.
 
 
 ![Captura de pantalla 2024-07-05 183800](https://github.com/LuisMerc4do/law-firm-system/assets/163725779/b6cedf1e-c105-430c-8b3b-40b099ac24bd)
