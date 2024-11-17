@@ -56,10 +56,10 @@ Docker (optional but recommended for easier setup)
 # Installation Steps
 Clone the Repository
 
-bash
-Copy code
+```
 git clone https://github.com/your-username/law-firm-management-system.git
 cd law-firm-management-system
+```
 
 Configure the Database
 
@@ -67,15 +67,16 @@ Update the appsettings.json file with your PostgreSQL connection string:
 
 Apply Migrations
 
-bash
-Copy code
+```
 dotnet ef database update
+```
 Run the Application
 
-bash
-Copy code
+```
 dotnet run
+```
 Access the API Documentation
+
 
 Open your browser and navigate to http://localhost:5000/swagger to view the API documentation.
 # 🔍 Improvements and Focus Areas
